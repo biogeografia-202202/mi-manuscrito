@@ -1,3 +1,5 @@
+% ARTICLE ----
+% This is just here so I know exactly what I'm looking at in Rstudio when messing with stuff.
 \documentclass[11pt,]{article}
 \usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
 \newcommand*{\authorfont}{\fontfamily{phv}\selectfont}
@@ -6,6 +8,7 @@
 
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+
 
 
 
@@ -36,14 +39,14 @@
 
 
 
-\setcounter{secnumdepth}{3}
+\setcounter{secnumdepth}{0}
+
 
 
 
 \title{Título\\
 Subtítulo\\
 Subtítulo  }
- 
 
 
 
@@ -63,19 +66,22 @@ Domingo (UASD)''}  }
 \titleformat*{\paragraph}{\normalsize\itshape}
 \titleformat*{\subparagraph}{\normalsize\itshape}
 
-\titlespacing{\section}
-{0pt}{36pt}{0pt}
-\titlespacing{\subsection}
-{0pt}{36pt}{0pt}
-\titlespacing{\subsubsection}
-{0pt}{36pt}{0pt}
-
 
 
 
 
 \newtheorem{hypothesis}{Hypothesis}
 \usepackage{setspace}
+
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{pdflscape} \newcommand{\blandscape}{\begin{landscape}} \newcommand{\elandscape}{\end{landscape}} \usepackage{float} \floatplacement{figure}{H} \floatplacement{table}{H} \newcommand{\beginsupplement}{ \setcounter{table}{0} \renewcommand{\thetable}{S\arabic{table}} \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}} }
+
+% move the hyperref stuff down here, after header-includes, to allow for - \usepackage{hyperref}
 
 \makeatletter
 \@ifpackageloaded{hyperref}{}{%
@@ -84,7 +90,7 @@ Domingo (UASD)''}  }
               unicode=false, % unicode breaks when used with xetex
               xetex]{hyperref}
 \else
-  \PassOptionsToPackage{hyphens}{url}\usepackage[unicode=true]{hyperref}
+  \PassOptionsToPackage{hyphens}{url}\usepackage[draft,unicode=true]{hyperref}
 \fi
 }
 
@@ -99,7 +105,7 @@ Domingo (UASD)''}  }
             pdfauthor={Nombre de el/la estudiante (Afiliación,
 normalmente algo tal que ``Estudiante, Universidad Autónoma de Santo
 Domingo (UASD)'')},
-             pdfkeywords = {palabra clave 1, palabra clave 2},  
+             pdfkeywords = {palabra clave 1, palabra clave 2},
             pdftitle={Título\\
 Subtítulo\\
 Subtítulo},
@@ -110,35 +116,47 @@ Subtítulo},
             pdfborder={0 0 0}}
 \urlstyle{same}  % don't use monospace font for urls
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
-\usepackage{pdflscape} \newcommand{\blandscape}{\begin{landscape}} \newcommand{\elandscape}{\end{landscape}} \usepackage{float} \floatplacement{figure}{H} \newcommand{\beginsupplement}{ \setcounter{table}{0} \renewcommand{\thetable}{S\arabic{table}} \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}} }
+% Add an option for endnotes. -----
 
 
 % add tightlist ----------
 \providecommand{\tightlist}{%
 \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-\begin{document}
-	
-% \pagenumbering{arabic}% resets `page` counter to 1 
-%    
+% add some other packages ----------
 
+% \usepackage{multicol}
+% This should regulate where figures float
+% See: https://tex.stackexchange.com/questions/2275/keeping-tables-figures-close-to-where-they-are-mentioned
+\usepackage[section]{placeins}
+
+% CSL environment change -----
+
+
+% Last minute stuff -----
+\usepackage{amssymb,amsmath} % HT @ashenkin
+
+% Tabla
+\usepackage{caption}
+\captionsetup[table]{name=Tabla}
+\captionsetup[figure]{name=Figura}
+
+\begin{document}
+
+% \pagenumbering{arabic}% resets `page` counter to 1
+%
 % \maketitle
 
 {% \usefont{T1}{pnc}{m}{n}
 \setlength{\parindent}{0pt}
 \thispagestyle{plain}
-{\fontsize{18}{20}\selectfont\raggedright 
-\maketitle  % title \par  
+{\fontsize{18}{20}\selectfont\raggedright
+\maketitle  % title \par
 
 }
 
 {
-   \vskip 13.5pt\relax \normalsize\fontsize{11}{12} 
+   \vskip 13.5pt\relax \normalsize\fontsize{11}{12}
 \textbf{\authorfont Nombre de el/la
 estudiante} \hskip 15pt \emph{\small Afiliación, normalmente algo tal
 que ``Estudiante, Universidad Autónoma de Santo Domingo (UASD)''}   
@@ -158,7 +176,7 @@ que ``Estudiante, Universidad Autónoma de Santo Domingo (UASD)''}
 
     \hbox{\vrule height .2pt width 39.14pc}
 
-    \vskip 8.5pt % \small 
+    \vskip 8.5pt % \small
 
 \noindent Resumen del manuscrito
 
@@ -173,40 +191,48 @@ que ``Estudiante, Universidad Autónoma de Santo Domingo (UASD)''}
 \end{abstract}
 
 
-\vskip 6.5pt
+\vskip -8.5pt
 
 
-\noindent  \hypertarget{introducciuxf3n}{%
+ % removetitleabstract
+
+\noindent 
+
+\hypertarget{introducciuxf3n}{%
 \section{Introducción}\label{introducciuxf3n}}
 
-\ldots
+\ldots (elimina esta línea)
 
 \hypertarget{metodologuxeda}{%
 \section{Metodología}\label{metodologuxeda}}
 
-\ldots
+\ldots (elimina esta línea)
 
 \hypertarget{resultados}{%
 \section{Resultados}\label{resultados}}
 
-\ldots
+\ldots (elimina esta línea)
 
 \hypertarget{discusiuxf3n}{%
 \section{Discusión}\label{discusiuxf3n}}
 
+\ldots (elimina esta línea)
+
 \hypertarget{agradecimientos}{%
 \section{Agradecimientos}\label{agradecimientos}}
+
+\ldots (elimina esta línea)
 
 \hypertarget{informaciuxf3n-de-soporte}{%
 \section{Información de soporte}\label{informaciuxf3n-de-soporte}}
 
-\ldots
+\ldots (elimina esta línea)
 
 \hypertarget{script-reproducible}{%
 \section{\texorpdfstring{\emph{Script}
 reproducible}{Script reproducible}}\label{script-reproducible}}
 
-\ldots
+\ldots (elimina esta línea)
 
 \hypertarget{referencias}{%
 \section{Referencias}\label{referencias}}
@@ -214,6 +240,7 @@ reproducible}{Script reproducible}}\label{script-reproducible}}
 
 
 
+
 \newpage
-\singlespacing 
+\singlespacing
 \end{document}

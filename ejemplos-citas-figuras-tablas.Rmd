@@ -19,7 +19,7 @@ date: "`r format(Sys.time(), '%B %d, %Y')`"
 geometry: margin=1in
 fontfamily: mathpazo
 fontsize: 11pt
-bibliography: bibliography.bib
+bibliography: references.bib
 csl: apa.csl
 header-includes:
   \usepackage{pdflscape}
@@ -48,9 +48,35 @@ editor_options:
 
 # Resultados
 
-\ldots (elimina esta línea)
+Ver figura \ref{fig:mi_figura}
 
-# Discusión
+![\label{fig:mi_figura}Mi primera imagen](test.jpg)
+
+(ver tabla \ref{tab:mi_tabla})
+
+| Título columna 1 | Título columna 2 | Título columna 2 |
+|:-----------------|:----------------:|-----------------:|
+| F1C1 (izquierda) | F1C2 (centrado)  |   F1C3 (derecha) |
+| F2C1 (izquierda) | F2C2 (centrado)  |   F2C3 (derecha) |
+
+: \label{tab:mi_tabla} PROBANDO
+
+Ver figura \ref{fig:mi_plot_mtcars}
+
+```{r, fig.cap='\\label{fig:mi_plot_mtcars}Mi plot de mtcars'}
+plot(pressure)
+```
+
+Ver tabla \ref{tab:tabla_mtcars}
+
+```{r}
+library(kableExtra)
+kable(mtcars[1:10, ], booktabs = T,
+      caption = '\\label{tab:tabla_mtcars}Mi tabla de mtcars') %>% 
+    kable_classic(full_width = F, html_font = "Cambria")
+```
+
+# Discusión  
 
 \ldots (elimina esta línea)
 
